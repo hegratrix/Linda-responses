@@ -39,6 +39,7 @@
         let type = snapshot.val().type
         let time = snapshot.val().time
         let name = snapshot.val().name
+        let title = snapshot.val().title
         let email = snapshot.val().email
         let phone = snapshot.val().phone
         let message = snapshot.val().message
@@ -48,6 +49,7 @@
             <h1>${type}</h1>
             <h2>${time}</h2>
             <h2>${name}</h2>
+            <h2>Title: ${title}</h2>
             <h2>${email}</h2>
             <h2>${phone}</h2>
             <h3>${message}</h3>
