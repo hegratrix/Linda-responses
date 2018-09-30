@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <style>
+        h1 {
+            color: red;
+        }
+
+        .container {
+            border-bottom: 2px solid black;
+        }
+
+    </style>
+    
+     <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+<script>
+    var config = {
+        apiKey: "AIzaSyBqbPAsKzmrPxv-Vp6KN6qVfb0oe2rS9iU",
+        authDomain: "linda-lunn2018.firebaseapp.com",
+        databaseURL: "https://linda-lunn2018.firebaseio.com",
+        projectId: "linda-lunn2018",
+        storageBucket: "linda-lunn2018.appspot.com",
+        messagingSenderId: "825496083454"
+    };
+    firebase.initializeApp(config)
+    let db = firebase.database()
+    let userRef = db.ref('users')
+ 
+    userRef.on('child_added', function(snapshot){
+        console.log(snapshot.val().email)
+        let type = snapshot.val().type
+        let time = snapshot.val().time
+        let name = snapshot.val().name
+        let email = snapshot.val().email
+        let phone = snapshot.val().phone
+        let message = snapshot.val().message
+
+        $("#content").append(`
+            <div class="container">
+            <h1>${type}</h1>
+            <h2>${time}</h2>
+            <h2>${name}</h2>
+            <h2>${email}</h2>
+            <h2>${phone}</h2>
+            <h3>${message}</h3>
+            </div>
+        `)
+    })
+</script>
+</body>
+</html>
